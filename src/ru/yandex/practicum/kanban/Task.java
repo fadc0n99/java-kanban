@@ -1,4 +1,4 @@
-package ru.yandex.practicum;
+package ru.yandex.practicum.kanban;
 
 public class Task {
     protected static int counter = 0;
