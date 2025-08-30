@@ -1,6 +1,7 @@
 package ru.yandex.practicum;
 
 public class Task {
+    protected static int counter = 0;
     protected String title;
     protected String description;
     protected int id;
@@ -10,11 +11,13 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = TaskStatus.NEW;
+        this.id = ++counter;
     }
 
     public Task(String title) {
         this.title = title;
         this.status = TaskStatus.NEW;
+        this.id = ++counter;
     }
 
     public int getId() {
