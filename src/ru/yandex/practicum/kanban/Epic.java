@@ -18,15 +18,12 @@ public class Epic extends Task {
     }
 
     public void calculateAndSetStatus(List<TaskStatus> statuses) {
-        if (statuses.isEmpty()) {
+        if (statuses.isEmpty() || statuses.stream().allMatch(status -> status == TaskStatus.NEW)) {
+            this.status = TaskStatus.NEW;
+        } else if (statuses.stream().allMatch(status -> status == TaskStatus.DONE)) {
             this.status = TaskStatus.DONE;
         } else {
-            for (TaskStatus subtaskStatus : statuses) {
-                if (subtaskStatus == TaskStatus.IN_PROGRESS) {
-                    this.status = TaskStatus.IN_PROGRESS;
-                    break;
-                }
-            }
+            this.status = TaskStatus.IN_PROGRESS;
         }
     }
 
