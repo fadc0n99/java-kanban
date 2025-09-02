@@ -9,11 +9,13 @@ public class TaskManager {
     private final HashMap<Integer, Task> taskList;
     private final HashMap<Integer, Subtask> subtaskList;
     private final HashMap<Integer, Epic> epicList;
+    private int counterId;
 
     public TaskManager() {
         this.taskList = new HashMap<>();
         this.subtaskList = new HashMap<>();
         this.epicList = new HashMap<>();
+        this.counterId = 0;
     }
 
     public List<Task> getTaskList() {
@@ -30,6 +32,7 @@ public class TaskManager {
 
     public void createTask(Task task) {
         if (task != null) {
+            task.setId(++counterId);
             taskList.put(task.getId(), task);
         }
     }
@@ -56,6 +59,7 @@ public class TaskManager {
 
     public void createEpic(Epic epic) {
         if (epic != null) {
+            epic.setId(++counterId);
             epicList.put(epic.getId(), epic);
         }
     }
@@ -90,6 +94,7 @@ public class TaskManager {
 
     public void createSubtask(Subtask subtask, int epicId) {
         if (subtask != null && epicList.containsKey(epicId)) {
+            subtask.setId(++counterId);
             subtask.setEpicId(epicId);
             subtaskList.put(subtask.getId(), subtask);
         }

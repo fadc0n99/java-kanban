@@ -1,7 +1,6 @@
 package ru.yandex.practicum.kanban;
 
 public class Task {
-    protected static int counter = 0;
     protected String title;
     protected String description;
     protected int id;
@@ -11,13 +10,11 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = TaskStatus.NEW;
-        this.id = ++counter;
     }
 
     public Task(String title) {
         this.title = title;
         this.status = TaskStatus.NEW;
-        this.id = ++counter;
     }
 
     public int getId() {
@@ -46,7 +43,7 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(this.id);
+        return Integer.hashCode(id);
     }
 
     @Override
