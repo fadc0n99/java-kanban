@@ -47,18 +47,21 @@ public class Main {
         */
         Epic epic = new Epic("Приготовить ужин");
         Subtask subtask = new Subtask("Купить продукты");
+        subtask.setEpicId(3);
         subtask.setStatus(TaskStatus.IN_PROGRESS);
         Subtask subtask1 = new Subtask("Помыть посуду");
+        subtask1.setEpicId(3);
 
         taskManager.createEpic(epic);
-        taskManager.createSubtask(subtask, 3);
-        taskManager.createSubtask(subtask1, 3);
+        taskManager.createSubtask(subtask);
+        taskManager.createSubtask(subtask1);
 
         Epic epic2 = new Epic("Эпик");
         Subtask subtask3 = new Subtask("Подзадача", "Задача эпика");
+        subtask3.setEpicId(6);
         taskManager.createEpic(epic2);
         subtask3.setStatus(TaskStatus.DONE);
-        taskManager.createSubtask(subtask3, 6);
+        taskManager.createSubtask(subtask3);
 
         List<Subtask> subtaskList = taskManager.getSubtaskList();
         List<Epic> epicList = taskManager.getEpicList();

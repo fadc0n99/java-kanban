@@ -88,8 +88,9 @@ public class TaskManager {
         subtaskList.clear();
     }
 
-    public void createSubtask(Subtask subtask, int epicId) {
-        if (subtask != null && epicList.containsKey(epicId)) {
+    public void createSubtask(Subtask subtask) {
+        if (subtask != null && epicList.containsKey(subtask.getEpicId())) {
+            int epicId = subtask.getEpicId();
             subtask.setId(++counterId);
             subtask.setEpicId(epicId);
             subtaskList.put(subtask.getId(), subtask);
